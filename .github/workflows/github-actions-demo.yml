@@ -25,5 +25,5 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: List files
-      run: echo ${{ ls -R }}
+      run: ls -R
       
