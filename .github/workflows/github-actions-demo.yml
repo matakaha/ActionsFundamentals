@@ -16,6 +16,10 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
+    - name: Set time
+      run: echo '::set-output name=my_time::$(date)'
+      id: set-time
+      
     - name: Output event name
       run: echo ${{ github.event_name }}
 
@@ -26,4 +30,13 @@ jobs:
       uses: actions/checkout@v2
     - name: List files
       run: ls -R
-      
+
+    - name: Output Time
+      run: echo "It was ${{ steps.set-time.outputs.my_time }} in the previous step."
+
+    - name: Writing to the workflow log
+      run: |
+        echo "Writing to the workflow log"
+        echo "::group::writing to the log"
+        echo "::notice file=init.yml,line=10,col=8,endColumn=10::Writing a notice"
+        echo "::endgroup::"
