@@ -5,7 +5,11 @@ jobs:
   test-action:
     runs-on: ubuntu-latest
     steps:
-      - name: Say hello
-        uses: matakaha/hello-world-docker-action@v1
-        with:
-          who-to-greet: '@octocat'
+    - name: Adding markdown
+      run: echo '### Hello world! 🚀' >> $GITHUB_STEP_SUMMARY
+
+    - name: Say hello
+      uses: matakaha/hello-world-docker-action@v1
+      with:
+        who-to-greet: '@octocat'
+          
